@@ -1,0 +1,65 @@
+<!-- pages/animalVideo/animalVideo.wxml -->
+<view class="container">
+  <view class="title">动物动画生成器</view>
+  
+  <!-- Image Selection Section -->
+  <view class="section image-section">
+    <view class="section-title">1. 选择动物图片</view>
+    <view class="image-container" bindtap="chooseImage">
+      <image wx:if="{{imagePath}}" src="{{imagePath}}" mode="aspectFit" class="preview-image"></image>
+      <view wx:else class="placeholder">
+        <view class="upload-icon">+</view>
+        <view>点击上传图片</view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- Animation Settings Section -->
+  <view class="section settings-section">
+    <view class="section-title">2. 设置动画参数</view>
+    
+    <!-- Style Selection -->
+    <view class="setting-item">
+      <text class="setting-label">动画风格:</text>
+      <picker mode="selector" range="{{animationStyles}}" range-key="name" value="{{selectedStyle}}" bindchange="changeStyle">
+        <view class="picker">
+          {{animationStyles[selectedStyle].name}}
+          <view class="arrow">▼</view>
+        </view>
+      </picker>
+    </view>
+    
+    <!-- Emotion Selection -->
+    <view class="setting-item">
+      <text class="setting-label">情绪表现:</text>
+      <picker mode="selector" range="{{emotionOptions}}" range-key="name" value="{{selectedEmotion}}" bindchange="changeEmotion">
+        <view class="picker">
+          {{emotionOptions[selectedEmotion].name}}
+          <view class="arrow">▼</view>
+        </view>
+      </picker>
+    </view>
+    
+    <!-- Duration Selection -->
+    <view class="setting-item">
+      <text class="setting-label">视频长度: {{duration}}秒</text>
+      <slider min="3" max="15" value="{{duration}}" show-value bindchange="changeDuration"></slider>
+    </view>
+  </view>
+  
+  <!-- Generation Button -->
+  <view class="section action-section">
+    <view class="section-title">3. 生成动画</view>
+    <button class="generate-btn" bindtap="generateVideo" loading="{{isLoading}}">生成动画</button>
+  </view>
+  
+  <!-- Result Section -->
+  <view class="section result-section" wx:if="{{videoPath}}">
+    <view class="section-title">4. 动画预览</view>
+    <video src="{{videoPath}}" controls class="preview-video"></video>
+    <view class="action-buttons">
+      <button class="action-btn save-btn" bindtap="saveVideo">保存到相册</button>
+      <button class="action-btn share-btn" open-type="share">分享</button>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,34 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/animalVideo/animalVideo"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "AI图像分析",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#999",
+    "selectedColor": "#07c160",
+    "backgroundColor": "#fff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "图像分析",
+        "iconPath": "images/icon_analysis.png",
+        "selectedIconPath": "images/icon_analysis_selected.png"
+      },
+      {
+        "pagePath": "pages/animalVideo/animalVideo",
+        "text": "动物动画",
+        "iconPath": "images/icon_animation.png",
+        "selectedIconPath": "images/icon_animation_selected.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
